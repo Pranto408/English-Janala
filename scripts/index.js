@@ -4,17 +4,15 @@ const loadLessons = () => {
     .then((json) => displayLessons(json.data));
 };
 
-
 const displayLessons = (lessons) => {
   //   1.get the container &empty
   const lessonsContainer = document.getElementById("lessons-container");
   lessonsContainer.innerHTML = "";
   // 2. create element div and innar html
   for (let lesson of lessons) {
-    //   console.log(lesson)
     const btnDiv = document.createElement("div");
     btnDiv.innerHTML = `
-        <button onclick="loadLevelWord(${lesson.level_no})" class="btn btn-outline btn-primary">
+        <button id="level-btn-${lesson.level_no}" onclick="loadLevelWord(${lesson.level_no})" class="btn btn-outline btn-primary lesson-btn">
         <i class="fa-solid fa-book-open"></i> Lesson -${lesson.level_no}
     </button>
         `;
@@ -23,27 +21,42 @@ const displayLessons = (lessons) => {
 };
 loadLessons();
 
+
 const loadLevelWord = (id) => {
-  console.log(id);
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   fetch(url)
     .then((res) => res.json())
-    .then((json) => displayWordLessons(json.data));
+    .then((json) => {
+        const lessonButton = document.querySelectorAll(".lesson-btn");
+        lessonButton.forEach((btn) => btn.classList.remove("active"));
+        const clickedBtn = document.getElementById(`level-btn-${id}`);
+        clickedBtn.classList.add("active");
+      displayWordLessons(json.data);
+    });
 };
 
 const displayWordLessons = (data) => {
   //   1.get the container &empty
   const lessonsWordContainer = document.getElementById("words-container");
   lessonsWordContainer.innerHTML = "";
+  //No lesson load
+  if (data.length === 0) {
+    lessonsWordContainer.innerHTML = `
+       <div class="flex flex-col items-center space-y-2 col-span-3">
+        <img class="mx-auto" src="./assets/alert-error.png" alt="">
+        <p class="text-[#79716B] text-sm font-bangla">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
+        <h2 class="text-[#292524] font-semibold text-3xl  font-bangla">নেক্সট Lesson এ যান</h2>
+       </div>
+    `;
+  }
   // 2. create element div and inner html
   for (let d of data) {
-      console.log(d)
     const wordDiv = document.createElement("div");
     wordDiv.innerHTML = ` 
         <div class="bg-white py-10 px-5 text-center space-y-4 shadow rounded-lg">
-        <h2 class="font-bold text-3xl">${d.word}</h2>
+        <h2 class="font-bold text-3xl">${d.word ? d.word : '<span style="color:red;">Word not found!</span>'}</h2>
         <p class="text-xl font-medium leading-6">Meaning /Pronunciation</p>
-        <h2 class="text-[#464648] font-bangla font-semibold text-3xl">"${d.meaning} / ${d.pronunciation}"</h2>
+        <h2 class="text-[#464648] font-bangla font-semibold text-3xl">"${d.meaning ? d.meaning : '<span style="color:red;">অর্থ পাওয়া যায় নি!</span>'} / ${d.pronunciation ? d.pronunciation : '<span style="color:red;">উচ্চারণ পাওয়া যায় নি!</span>'}"</h2>
         <div class="flex justify-between items-center">
           <button class="btn text-[#374957] bg-[#1A91FF10] hover:bg-[#1A91FF80] text-xl py-6 px-3"><i class="fa-solid fa-circle-info"></i></button>
           <button class="btn text-[#374957] bg-[#1A91FF10] hover:bg-[#1A91FF80] text-xl  py-6 px-3"><i class="fa-solid fa-volume-high"></i></button>

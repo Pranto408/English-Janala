@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <!-- Navbar section -->
     <header>
       <div class="navbar bg-base-100 shadow-sm bg-[#BADEFF25] px-10">
         <div class="navbar-start">
@@ -90,7 +91,7 @@
 
       </div>
     </header>
-
+    <!-- Hero Section -->
     <section class="w-11/12 mx-auto flex items-center justify-between gap-10 my-16
     flex-col-reverse md:flex-row">
       <div class="content-div flex-1 text-center md:text-start">
@@ -110,15 +111,21 @@
         <img src="./assets/hero-student.png" alt="">
       </div>
     </section>
-
+    <!-- Vocabularies top section -->
     <section>
       <h2 class="text-4xl font-bold mb-6 text-center"><span class="text-[#00BCFF]">Let's</span>  Learn Vocabularies</h2>
       <div id="lessons-container" class="flex flex-wrap justify-center gap-5">
 
       </div>
     </section>
+    <!-- Word Fetch Section  -->
     <section id="words-container" class="bg-base-300 p-10 my-10 w-11/12 mx-auto grid  grid-cols-1   md:grid-cols-2 lg:grid-cols-3 gap-5">
       
+      <!-- Default Select lessons -->
+       <div class="flex flex-col items-center space-y-2 col-span-3">
+        <p class="text-[#79716B] text-sm font-bangla">আপনি এখনো কোন Lesson Select করেন নি</p>
+        <h2 class="text-[#292524] font-semibold text-3xl  font-bangla">একটি Lesson Select করুন।</h2>
+       </div>
     </section>
     <script src="./scripts/index.js"></script>
   </body>
