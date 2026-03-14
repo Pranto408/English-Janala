@@ -59,14 +59,21 @@
               class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <li>
-              <a href="" class=""><i class="fa-solid fa-circle-question"></i>  FAQ</a>
-            </li>
-            <li>
-              <a href="" class=""><i class="fa-solid fa-book-open"></i>  Learn</a>
-            </li>
-            <li>
-              <a href="" class=""><i class="fa-solid fa-arrow-right-from-bracket"></i>  Logout</a>
-            </li>
+                <a href="" class=""
+                  ><i class="fa-solid fa-circle-question"></i> FAQ</a
+                >
+              </li>
+              <li>
+                <a href="" class=""
+                  ><i class="fa-solid fa-book-open"></i> Learn</a
+                >
+              </li>
+              <li>
+                <a href="" class=""
+                  ><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                  Logout</a
+                >
+              </li>
             </ul>
           </div>
           <a href="" class="flex items-center gap-1">
@@ -78,55 +85,91 @@
         <div class="navbar-end hidden md:flex">
           <ul class="menu menu-horizontal px-1 space-x-4">
             <li>
-              <a href="" class="btn btn-outline btn-primary"><i class="fa-solid fa-circle-question"></i>  FAQ</a>
+              <a href="" class="btn btn-outline btn-primary"
+                ><i class="fa-solid fa-circle-question"></i> FAQ</a
+              >
             </li>
             <li>
-              <a href="" class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open"></i>  Learn</a>
+              <a href="" class="btn btn-outline btn-primary"
+                ><i class="fa-solid fa-book-open"></i> Learn</a
+              >
             </li>
             <li>
-              <a href="" class="btn btn-outline btn-primary"><i class="fa-solid fa-arrow-right-from-bracket"></i>  Logout</a>
+              <a href="" class="btn btn-outline btn-primary"
+                ><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a
+              >
             </li>
           </ul>
         </div>
-
       </div>
     </header>
     <!-- Hero Section -->
-    <section class="w-11/12 mx-auto flex items-center justify-between gap-10 my-16
-    flex-col-reverse md:flex-row">
+    <section
+      class="w-11/12 mx-auto flex items-center justify-between gap-10 my-16 flex-col-reverse md:flex-row"
+    >
       <div class="content-div flex-1 text-center md:text-start">
-        <h2 class="text-4xl font-bold mb-6"><span class="text-[#00BCFF]">English</span> is Easy!!</h2>
-        <p class="font-bangla text-[#18181B] font-medium">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
+        <h2 class="text-4xl font-bold mb-6">
+          <span class="text-[#00BCFF]">English</span> is Easy!!
+        </h2>
+        <p class="font-bangla text-[#18181B] font-medium">
+          আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা
+          আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে
+          অন্য একটি Level এ
+        </p>
         <div class="flex flex-col gap-6 mt-6 items-center md:items-start">
-      
-
           <input type="text" class="input" placeholder="Enter Your Name" />
-          <input type="password" class="input" placeholder="Enter Your Password" />
+          <input
+            type="password"
+            class="input"
+            placeholder="Enter Your Password"
+          />
           <button class="btn btn-primary max-w-[120px]">Get Started</button>
-
-      
-    </div>
+        </div>
       </div>
       <div class="image-div flex-1">
-        <img src="./assets/hero-student.png" alt="">
+        <img src="./assets/hero-student.png" alt="" />
       </div>
     </section>
     <!-- Vocabularies top section -->
     <section>
-      <h2 class="text-4xl font-bold mb-6 text-center"><span class="text-[#00BCFF]">Let's</span>  Learn Vocabularies</h2>
-      <div id="lessons-container" class="flex flex-wrap justify-center gap-5">
-
-      </div>
+      <h2 class="text-4xl font-bold mb-6 text-center">
+        <span class="text-[#00BCFF]">Let's</span> Learn Vocabularies
+      </h2>
+      <div
+        id="lessons-container"
+        class="flex flex-wrap justify-center gap-5"
+      ></div>
     </section>
     <!-- Word Fetch Section  -->
-    <section id="words-container" class="bg-base-300 p-10 my-10 w-11/12 mx-auto grid  grid-cols-1   md:grid-cols-2 lg:grid-cols-3 gap-5">
-      
+    <section
+      id="words-container"
+      class="bg-base-300 p-10 my-10 w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+    >
       <!-- Default Select lessons -->
-       <div class="flex flex-col items-center space-y-2 col-span-3">
-        <p class="text-[#79716B] text-sm font-bangla">আপনি এখনো কোন Lesson Select করেন নি</p>
-        <h2 class="text-[#292524] font-semibold text-3xl  font-bangla">একটি Lesson Select করুন।</h2>
-       </div>
+      <div class="flex flex-col items-center space-y-2 col-span-3">
+        <p class="text-[#79716B] text-sm font-bangla">
+          আপনি এখনো কোন Lesson Select করেন নি
+        </p>
+        <h2 class="text-[#292524] font-semibold text-3xl font-bangla">
+          একটি Lesson Select করুন।
+        </h2>
+      </div>
     </section>
+
+    <!-- Modal Section -->
+    <dialog id="details_Modal" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box">
+        <div id="details-container" class="space-y-10">
+          
+        </div>
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

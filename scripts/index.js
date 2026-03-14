@@ -1,3 +1,12 @@
+//Create element for modal synonyms
+const createElement = (arr) => {
+  const synonyms = arr.map(
+    (element) =>
+      `<span class="border border-[#D7E4EF] bg-[#EDF7FF] py-2 px-3 rounded-md">${element}</span>`,
+  );
+  return synonyms.join(" ");
+};
+
 const loadLessons = () => {
   fetch("https://openapi.programming-hero.com/api/levels/all")
     .then((res) => res.json())
@@ -21,19 +30,49 @@ const displayLessons = (lessons) => {
 };
 loadLessons();
 
-
 const loadLevelWord = (id) => {
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   fetch(url)
     .then((res) => res.json())
     .then((json) => {
-        const lessonButton = document.querySelectorAll(".lesson-btn");
-        lessonButton.forEach((btn) => btn.classList.remove("active"));
-        const clickedBtn = document.getElementById(`level-btn-${id}`);
-        clickedBtn.classList.add("active");
+      const lessonButton = document.querySelectorAll(".lesson-btn");
+      lessonButton.forEach((btn) => btn.classList.remove("active"));
+      const clickedBtn = document.getElementById(`level-btn-${id}`);
+      clickedBtn.classList.add("active");
       displayWordLessons(json.data);
     });
 };
+//Modal data load
+const loadWordDetails = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/word/${id}`;
+  const res = await fetch(url);
+  const details = await res.json();
+  displayWordDetails(details.data)
+};
+//Modal display
+const displayWordDetails = (details) => {
+  const detailsContainer = document.getElementById("details-container");
+  detailsContainer.innerHTML = `
+  <div>
+            <h2 class="text-[#000000] text-2xl font-semibold">${details.word} (<i class="fa-solid fa-microphone-lines"></i>:${details.pronunciation})</h2>
+          </div>
+          <div>
+            <h2 class="text-[#000000] text-xl font-semibold">Meaning</h2>
+            <p class="font-bangla text-xl font-medium">${details.meaning}</p>
+          </div>
+          <div>
+            <h2 class="text-[#000000] text-xl font-semibold">Example</h2>
+            <p class="text-xl">${details.sentence}</p>
+          </div>
+          <div>
+            <h2 class="text-[#000000] text-xl mb-2 font-medium font-bangla">সমার্থক শব্দ গুলো</h2>
+            <div class="space-x-3">
+              ${createElement(details.synonyms)}
+            </div>
+          </div>
+  `;
+  document.getElementById("details_Modal").showModal();
+}
 
 const displayWordLessons = (data) => {
   //   1.get the container &empty
@@ -58,7 +97,7 @@ const displayWordLessons = (data) => {
         <p class="text-xl font-medium leading-6">Meaning /Pronunciation</p>
         <h2 class="text-[#464648] font-bangla font-semibold text-3xl">"${d.meaning ? d.meaning : '<span style="color:red;">অর্থ পাওয়া যায় নি!</span>'} / ${d.pronunciation ? d.pronunciation : '<span style="color:red;">উচ্চারণ পাওয়া যায় নি!</span>'}"</h2>
         <div class="flex justify-between items-center">
-          <button class="btn text-[#374957] bg-[#1A91FF10] hover:bg-[#1A91FF80] text-xl py-6 px-3"><i class="fa-solid fa-circle-info"></i></button>
+          <button onclick="loadWordDetails(${d.id})" class="btn text-[#374957] bg-[#1A91FF10] hover:bg-[#1A91FF80] text-xl py-6 px-3"><i class="fa-solid fa-circle-info"></i></button>
           <button class="btn text-[#374957] bg-[#1A91FF10] hover:bg-[#1A91FF80] text-xl  py-6 px-3"><i class="fa-solid fa-volume-high"></i></button>
         </div>
       </div>
