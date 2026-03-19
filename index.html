@@ -131,7 +131,7 @@
       </div>
     </section>
     <!-- Vocabularies top section -->
-    <section>
+    <section class="mb-5">
       <h2 class="text-4xl font-bold mb-6 text-center">
         <span class="text-[#00BCFF]">Let's</span> Learn Vocabularies
       </h2>
@@ -140,6 +140,24 @@
         class="flex flex-wrap justify-center gap-5"
       ></div>
     </section>
+    <!-- Search Section -->
+    <section class="flex justify-center">
+      <div class="join">
+  <div>
+    <label class="input validator join-item">
+      
+      <input id="input-search" type="text" placeholder="Search Vocabulary Now" required />
+    </label>
+
+  </div>
+  <button id="button-search" class="btn btn-primary join-item">Search</button>
+</div>
+    </section>
+
+    <!-- Spinner section -->
+     <span id="spinner" class="hidden"><section class="flex justify-center items-center mb-60">
+      <span class="loading loading-bars loading-xl"></span>
+     </section></span>
     <!-- Word Fetch Section  -->
     <section
       id="words-container"
